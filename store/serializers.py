@@ -7,13 +7,25 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = ['id', 'name', 'slug']
 
 class ProductSerializer(serializers.ModelSerializer):
+    image_absolute_url = serializers.SerializerMethodField()
+
     class Meta:
         model = Product
-        fields = ['id', 'name','slug','description','price','is_new','category','image', 'image_absolute_url'] 
-        
+        fields = [
+            'id',
+            'name',
+            'slug',
+            'description',
+            'price',
+            'is_new',
+            'category',
+            'image',
+            'image_absolute_url',  
+        ]
+
     def get_image_absolute_url(self, obj):
         request = self.context.get('request')
-        if obj.image:
+        if obj.image and request:
             return request.build_absolute_uri(obj.image.url)
         return None
 
