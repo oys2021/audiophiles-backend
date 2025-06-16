@@ -9,8 +9,8 @@ class CategorySerializer(serializers.ModelSerializer):
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = '__all__'
-
+        fields = ['id', 'name','slug','description','price','is_new','category','image', 'image_absolute_url'] 
+        
     def get_image_absolute_url(self, obj):
         request = self.context.get('request')
         if obj.image:
