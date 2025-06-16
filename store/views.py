@@ -33,10 +33,13 @@ class EarphoneListView(generics.ListAPIView):
     def get_serializer_context(self):
         return {'request': self.request}
 
-class ProductDetailView(generics.RetrieveAPIView):
+class ProductDetailView(RetrieveAPIView):
     queryset = Product.objects.all()
-    serializer_class = ProductDetailSerializer
-    lookup_field = 'slug'
+    serializer_class = ProductSerializer
+
+    def get_serializer_context(self):
+        return {'request': self.request}
+
 
 
 class OrderCreateView(generics.CreateAPIView):
