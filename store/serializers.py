@@ -1,3 +1,4 @@
+import os
 from rest_framework import serializers
 from .models import Product, Category, Order, OrderItem,ProductGallery
 
@@ -24,10 +25,8 @@ class ProductSerializer(serializers.ModelSerializer):
         ]
 
     def get_image_absolute_url(self, obj):
-        request = self.context.get('request')
-        if obj.image and request:
-            return request.build_absolute_uri(obj.image.url)
-        return None
+        filename = os.path.basename(obj.image.name)
+        return f"/static/media/products/{filename}"
 
 class ProductGallerySerializer(serializers.ModelSerializer):
     class Meta:
