@@ -15,6 +15,7 @@ class Product(models.Model):
     image = models.ImageField(upload_to='products/')
     is_new = models.BooleanField(default=False)
     category = models.CharField(max_length=100)
+    description= models.TextField(null=True)
 
     def __str__(self):
         return self.name
