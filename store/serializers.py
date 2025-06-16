@@ -13,20 +13,13 @@ class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = [
-            'id',
-            'name',
-            'slug',
-            'description',
-            'price',
-            'is_new',
-            'category',
-            'image',
-            'image_absolute_url',  
+            'id', 'name', 'slug', 'description', 'price', 'is_new', 'category', 'image', 'image_absolute_url'
         ]
 
     def get_image_absolute_url(self, obj):
+        request = self.context.get('request')
         filename = os.path.basename(obj.image.name)
-        return f"/static/media/products/{filename}"
+        return request.build_absolute_uri(f'/static/media/products/{filename}')
 
 class ProductGallerySerializer(serializers.ModelSerializer):
     class Meta:
