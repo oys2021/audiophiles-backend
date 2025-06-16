@@ -1,1 +1,1 @@
-"web: gunicorn audiophiles.wsgi" 
+web: gunicorn audiophiles.wsgi
