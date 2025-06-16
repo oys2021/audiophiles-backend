@@ -103,12 +103,8 @@ DATABASES = {
 
 CORS_ALLOW_CREDENTIALS = True
 
-# CORS_ALLOW_HEADERS = list(default_headers) + [
-#     'your-custom-header',
-# ]audiophiles.up.railway.app
-
 CSRF_TRUSTED_ORIGINS = [
-    'https://audiophiles.up.railway.app/',
+    'https://audiophiles.up.railway.app',
 ]
 
 
