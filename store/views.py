@@ -14,13 +14,24 @@ class SpeakerListView(generics.ListAPIView):
     queryset = Product.objects.filter(category='Speakers')
     serializer_class = ProductSerializer
 
+    def get_serializer_context(self):
+        return {'request': self.request}
+
+
 class HeadphoneListView(generics.ListAPIView):
     queryset = Product.objects.filter(category='Headphones')
     serializer_class = ProductSerializer
 
+    def get_serializer_context(self):
+        return {'request': self.request}
+
+
 class EarphoneListView(generics.ListAPIView):
     queryset = Product.objects.filter(category='Earphones')
     serializer_class = ProductSerializer
+
+    def get_serializer_context(self):
+        return {'request': self.request}
 
 class ProductDetailView(generics.RetrieveAPIView):
     queryset = Product.objects.all()
